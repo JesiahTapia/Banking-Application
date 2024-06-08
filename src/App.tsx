@@ -1,4 +1,5 @@
 import React from "react";
+import Header from "./Header";
 import AppRouter from "./Router";
 import BankProvider from "./BankInfo";
 
@@ -7,7 +8,6 @@ const App: React.FC = () => {
     <BankProvider>
       <Header />
       <AppRouter />
-      <Footer />
     </BankProvider>
   );
 };
