@@ -1,4 +1,3 @@
-// src/components/Account.tsx
 import React, { useContext, useState } from "react";
 import { BankContext } from "../BankInfo";
 

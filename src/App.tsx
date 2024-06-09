@@ -1,9 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import HomePage from "./components/HomePage";
 import AccountPage from "./components/AccountPage";
+import Login from "./components/Login";
 
 const App: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+
+  const handleLogin = () => {
+    // Update authentication state upon successful login
+    setIsLoggedIn(true);
+  };
+
   return (
     <Router>
       <div>
@@ -19,8 +27,19 @@ const App: React.FC = () => {
           </ul>
         </nav>
         <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/account" element={<AccountPage />} />
+          <Route
+            path="/"
+            element={
+              isLoggedIn ? <HomePage /> : <Login onLogin={handleLogin} />
+            }
+          />
+          <Route
+            path="/account"
+            element={
+              isLoggedIn ? <AccountPage /> : <Login onLogin={handleLogin} />
+            }
+          />
+          {/* Add more routes as needed */}
         </Routes>
       </div>
     </Router>
