@@ -1,27 +1,41 @@
-import React, { useContext, useState } from "react";
-import { BankContext } from "../BankInfo";
+import React, { useState, useEffect } from "react";
 
 const AccountPage: React.FC = () => {
-  const bankContext = useContext(BankContext);
-  const [amount, setAmount] = useState<number>(0);
+  const [userInfo, setUserInfo] = useState<any>(null); // Change 'any' to the type of your user info object
 
-  if (!bankContext) {
+  useEffect(() => {
+    // Fetch user's account information from the server
+    fetchUserInfo();
+  }, []); // Empty dependency array ensures this effect runs only once, similar to componentDidMount
+
+  const fetchUserInfo = async () => {
+    try {
+      // Make a GET request to your server endpoint to fetch user's account info
+      const response = await fetch("/api/user/account"); // Change the URL to your actual endpoint
+      if (!response.ok) {
+        throw new Error("Failed to fetch user account information");
+      }
+      const data = await response.json();
+      setUserInfo(data); // Assuming data is an object containing user's account info
+    } catch (error) {
+      console.error("Error fetching user account information:", error);
+    }
+  };
+
+  if (!userInfo) {
     return <div>Loading...</div>;
   }
 
-  const { balance, deposit, withdraw } = bankContext;
+  const { account_id, firstname, lastname, account_balance } = userInfo;
 
   return (
     <div>
       <h2>Account Page</h2>
-      <p>Balance: ${balance}</p>
-      <input
-        type="number"
-        value={amount}
-        onChange={(e) => setAmount(parseFloat(e.target.value))}
-      />
-      <button onClick={() => deposit(amount)}>Deposit</button>
-      <button onClick={() => withdraw(amount)}>Withdraw</button>
+      <p>ID: {account_id}</p>
+      <p>
+        Name: {firstname} {lastname}
+      </p>
+      <p>Balance: ${account_balance}</p>
     </div>
   );
 };
