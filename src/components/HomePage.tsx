@@ -3,7 +3,7 @@ import React from "react";
 const HomePage: React.FC = () => {
   return (
     <div>
-      <h2>Welcome to the Banking App</h2>
+      <h2>The Future of Currency is now!</h2>
     </div>
   );
 };

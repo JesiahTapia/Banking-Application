@@ -1,23 +1,30 @@
-import React, { createContext, useState } from "react";
+import React, { createContext, useState, ReactNode } from "react";
 
-interface BankInfoProps {
+interface BankContextType {
   balance: number;
   deposit: (amount: number) => void;
   withdraw: (amount: number) => void;
 }
 
-export const BankInfo = createContext<BankInfoProps | undefined>(undefined);
+export const BankContext = createContext<BankContextType | undefined>(
+  undefined
+);
 
-const BankProvider: React.FC = ({ children }) => {
-  const [balance, setBalance] = useState<number>(1000);
+const BankProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
+  const [balance, setBalance] = useState<number>(0);
 
-  const deposit = (amount: number) => setBalance(balance + amount);
-  const withdraw = (amount: number) => setBalance(balance - amount);
+  const deposit = (amount: number) => {
+    setBalance(balance + amount);
+  };
+
+  const withdraw = (amount: number) => {
+    setBalance(balance - amount);
+  };
 
   return (
-    <BankInfo.Provider value={{ balance, deposit, withdraw }}>
+    <BankContext.Provider value={{ balance, deposit, withdraw }}>
       {children}
-    </BankInfo.Provider>
+    </BankContext.Provider>
   );
 };
 

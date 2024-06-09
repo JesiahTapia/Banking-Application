@@ -1,17 +1,16 @@
-import React from "react";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import HomePage from "./HomePage";
-import AccountPage from "./AccountPage";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import HomePage from "./components/HomePage";
+import AccountPage from "./components/AccountPage";
 
-const AppRouter: React.FC = () => {
+function App() {
   return (
-    <Router>
-      <Switch>
-        <Route path="/" Component={HomePage} />
-        <Route path="/account" Component={AccountPage} />
-      </Switch>
-    </Router>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/account" element={<AccountPage />} />
+      </Routes>
+    </BrowserRouter>
   );
-};
+}
 
-export default AppRouter;
+export default App;
