@@ -1,0 +1,48 @@
+{
+    "users": [
+      {
+        "customerId": "1234",
+        "customerName": "Jesiah",
+        "customerPin": 1234,
+        "customerAccountType": "Checkings",
+        "customerAccountNo": 8765678,
+        "customerAccountBalance": "12,450",
+        "customerAadhar": 12345678,
+        "customerPan": 12345678,
+        "customerContact": 123456789,
+        "customerEmail": "siahtapia@gmail.com",
+        "customerTransactions": [
+          {
+            "transactionId": 1466,
+            "transactionDate": "12/02/2023",
+            "transactionAmount": 5500,
+            "transactionType": "debit"
+          },
+          {
+            "transactionId": 1231,
+            "transactionDate": "13/02/2023",
+            "transactionAmount": 3200,
+            "transactionType": "credit"
+          },
+          {
+            "transactionId": 1876,
+            "transactionDate": "13/02/2023",
+            "transactionAmount": 7800,
+            "transactionType": "credit"
+          },
+          {
+            "transactionId": 1942,
+            "transactionDate": "13/02/2023",
+            "transactionAmount": 6700,
+            "transactionType": "credit"
+          },
+          {
+            "transactionId": 1967,
+            "transactionDate": "13/02/2023",
+            "transactionAmount": 5400,
+            "transactionType": "credit"
+          }
+        ]
+      }
+    ]
+  }
